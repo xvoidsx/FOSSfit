@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>FOSSfit - Your Open-Source Health and Fitness Partner!</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1 style="color:#ff10f0">FOSSfit</h1>
+  <p>Your open-source health and fitness partner!</p>
+  <div class="tabs">
+    <button id="journey-tab">My Health Journey</button>
+    <button id="food-tab">Food Diary</button>
+    <button id="medication-tab">Medication Tracker</button>
+    <button id="weight-tab">Weight Tracker</button>
+    <button id="goals-tab">My Health Goals</button>
+    <button id="about-tab">About</button>
+  </div>
+  <div id="journey" class="tab-content">
+    <h2>Journey Log</h2>
+    <textarea id="journey-entry" rows="5" cols="50" placeholder="How are you feeling today?"></textarea>
+    <br>
+    <button id="journey-save">Save</button>
+    <h3>Entries</h3>
+    <div id="journey-list" class="entry-list"></div>
+  </div>
+  <div id="food" class="tab-content" style="display:none;">
+    <h2>Food Diary</h2>
+    <input type="text" id="food-entry" placeholder="Enter meal (e.g., Oatmeal, 200g)">
+    <button id="food-save">Save</button>
+    <h3>Entries</h3>
+    <div id="food-list" class="entry-list"></div>
+  </div>
+  <div id="medication" class="tab-content" style="display:none;">
+    <h2>Medication Tracker</h2>
+    <input type="text" id="medication-entry" placeholder="Enter medication (e.g., Ibuprofen 200mg)">
+    <input type="time" id="medication-time">
+    <button id="medication-save">Save</button>
+    <h3>Entries</h3>
+    <div id="medication-list" class="entry-list"></div>
+  </div>
+  <div id="weight" class="tab-content" style="display:none;">
+    <h2>Weight Tracker</h2>
+    <input type="number" id="weight-entry" placeholder="Enter weight (kg)" step="0.1">
+    <button id="weight-save">Save</button>
+    <h3>Entries</h3>
+    <div id="weight-list" class="entry-list"></div>
+  </div>
+  <div id="goals" class="tab-content" style="display:none;">
+    <h2>Goals</h2>
+    <input type="text" id="goal-entry" placeholder="Enter goal (e.g., Run 5km)">
+    <button id="goal-save">Save</button>
+    <h3>Entries</h3>
+    <div id="goals-list" class="entry-list"></div>
+  </div>
+  <div id="about" class="tab-content" style="display:none;">
+    <h2 style="color:#ff10f0">About FOSSfit</h2>
+    <p style="color:#00ffff">version: <b style="color:#39ff14">1.0.0</b></p>
+    <p>Developed with ❤️  by your friends at <a href="https://xvoidsx.xyz" target="_blank" style="color:#00ffff">xvoidsx</a>.</p>
+    <p>Licensed under the GNU General Public License v3.0 (GPLv3).</p>
+  </div>
+  <div id="entry-modal" class="modal" style="display:none;">
+    <div class="modal-content">
+      <span class="close-button" id="modal-close">×</span>
+      <h2>Entry Details</h2>
+      <p id="modal-timestamp"></p>
+      <p id="modal-content"></p>
+    </div>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>

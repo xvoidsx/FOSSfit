@@ -1,0 +1,37 @@
+{
+  "name": "fossfit",
+  "version": "1.0.0",
+  "description": "Your open-source health and fitness partner!",
+  "homepage": "https://xvoidsx.xyz",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder"
+  },
+  "author": {
+    "name": "xvoidsx",
+    "email": "rav3nwing@proton.me"
+  },
+  "license": "GPL-3.0",
+  "devDependencies": {
+    "electron": "^30.0.0",
+    "electron-builder": "^24.13.3"
+  },
+  "build": {
+    "appId": "com.xvoidsx.fossfit",
+    "productName": "FOSSfit",
+    "linux": {
+      "target": ["deb"],
+      "category": "Utility",
+      "icon": "icons",
+      "desktop": "build/fossfit.desktop",
+      "maintainer": "xvoidsx <rav3nwing@proton.me>"
+    },
+    "files": [
+      "**/*",
+      "icons/**/*",
+      "build/**/*",
+      "preload.js"
+    ]
+  }
+}
