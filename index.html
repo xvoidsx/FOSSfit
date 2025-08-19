@@ -5,9 +5,14 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <h1 style="color:#ff10f0">FOSSfit</h1>
-  <p>Your open-source health and fitness partner!</p>
-  <div class="tabs">
+  <div style="text-align:center">
+  	<img src="imgs/icon.png" title="FOSSfit logo" width="300px">
+  </div>
+  <!--XXX testing out a more minimal look with the logo instead of the text/subtext.-->
+  <!--!remove the below two lines if we end up liking the image-only look better-->
+  <!--<h1 style="color:#ff10f0;text-align:center">FOSSfit</h1>-->
+  <!--<p style="text-align:center">Your open-source health and fitness partner!</p>-->
+  <div class="tabs" style="text-align:center">
     <button id="journey-tab">My Health Journey</button>
     <button id="food-tab">Food Diary</button>
     <button id="medication-tab">Medication Tracker</button>
@@ -56,7 +61,8 @@
     <h2 style="color:#ff10f0">About FOSSfit</h2>
     <p style="color:#00ffff">version: <b style="color:#39ff14">1.0.0</b></p>
     <p>Developed with ❤️  by your friends at <a href="https://xvoidsx.xyz" target="_blank" style="color:#00ffff">xvoidsx</a>.</p>
-    <p>Licensed under the GNU General Public License v3.0 (GPLv3).</p>
+    <p>Licensed under the <b>GNU General Public License v3.0 (GPLv3)</b>.</p>
+    <p>Built with Web technologies and the great <a href="https://www.electronjs.org" target="_blank" style="color:#00ffff">Electron</a> framework.</p>
   </div>
   <div id="entry-modal" class="modal" style="display:none;">
     <div class="modal-content">
