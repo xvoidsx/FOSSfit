@@ -34,3 +34,5 @@ Over the longer term, we aim to bring the mobile version to fruition, which will
 **FOSSfit** is built by [xvoidsx](https://github.com/xvoidsx), an indie software studio creating things for GNU/Linux, Android, and the open Web.
 
 We use the excellent [Electron](https://www.electronjs.org) framework to create our software with modern Web technologies.
+
+**FOSSfit** is licensed under the [GNU General Public License, version 3](https://www.gnu.org/licenses/gpl-3.0.en.html).
