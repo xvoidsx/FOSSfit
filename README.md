@@ -20,11 +20,11 @@ To that end, we are working on some more features past the initial **1.0** stabl
 
 Other features that are planned for FOSSfit include:
 
-- **Blood pressure logging**: Record your bloog pressure (systolic/diastolic values) in order to expand tracking for your cardiovascular health - could be a huge help for people who deal with things like hypertension!
+- **Blood pressure logging**: Record your blood pressure (systolic/diastolic values) in order to expand tracking for your cardiovascular health - could be a huge help for people who deal with things like hypertension!
 - **Exercise logging**: Log types of exercises you do and times you do them, so you can visualize your exercise journey over time.
 - **Health statistics**: Display basic statistics and trends over time, providing insights into how you've been doing across all fields as your health journey goes on!
 - **Meditation and mindfulness helper**: Play ambient sounds with a set timer to allow the user to meditate with the app. Users can select sounds such as rain, forest sounds, ocean waves, white noise, or other options to meditate along to while the timer runs.
-- **Data export/import**: Allow you to export your health data from one FOSSfit instance on a device into another FOSSfit instance so you can keep track of your health data across your various devices, if you so choose!
+- **Data export/import**: Allows you to export your health data from one FOSSfit instance on a device into another FOSSfit instance so you can keep track of your health data across your various devices, if you so choose!
 
 We have a lot of ideas to iterate on, and we hope to bring these and other features in over time to make FOSSfit your #1 partner in your health and fitness journey.
 
