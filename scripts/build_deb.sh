@@ -33,6 +33,7 @@ main () {
         npm run dist || error_handler "$err_electronbuild"
         doas dpkg -i "$deb_location" || error_handler "$err_debinstall"
         echo "FOSSfit .deb package has been built and installed."; sleep 1
+        cd scripts
 }
 # - - - entry
 main
