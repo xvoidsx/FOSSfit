@@ -1,6 +1,6 @@
 # FOSSfit
 *your open-source partner in health and fitness*
-<img width="1366" height="676" alt="image" src="https://github.com/user-attachments/assets/1be2f865-fc85-4693-ae08-fdb84b6f8a7b" />
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/a56dd007-15e9-48c1-8e5d-fb27396f6649" />
 
 **FOSSfit** is a free and open-source application for managing your health and fitness.
 
