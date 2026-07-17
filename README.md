@@ -6,7 +6,7 @@
 
 It has some of the following features for building and tracking healthier habits:
 
-- **My Health Journey**: Log your own personal health journey in your own words - what's your mindset as you work on those healthier habits?
+- **My Journal**: Log your own personal health journey in your own words - what's your mindset as you work on those healthier habits?
 - **Food Diary**: Track your daily meals so you can see how you're doing! Are you eating healthier, or do you notice yourself falling back into old habits?
 - **Medication Tracker**: Log your medicines and the times you take them so you can stay on top of prescriptions and supplements.
 - **Weight Tracker**: Keep a routine weight log so you can visualize your progress!
