@@ -18,6 +18,44 @@ function debug(...args) {
 
 // --- module state ---
 let cachedData = null; // loaded once at startup
+const KG_TO_LB = 2.20462;
+
+function migrateWeightToLb(data) {
+  // One-time migration: convert kg entries to lb (v2.4.0+ uses lb)
+  if (!data._weightUnit || data._weightUnit === 'kg') {
+    if (Array.isArray(data.weight)) {
+      data.weight.forEach(w => {
+        if (typeof w.content === 'number' || !isNaN(parseFloat(w.content))) {
+          const kg = parseFloat(w.content);
+          // Only convert if it looks like kg (under 500)
+          if (kg < 500) w.content = (kg * KG_TO_LB).toFixed(1);
+        }
+      });
+    }
+    data._weightUnit = 'lb';
+  }
+  return data;
+}
+
+// Relative timestamps: "2 hours ago", "yesterday", etc.
+function relativeTime(timestamp) {
+  try {
+    const then = new Date(timestamp).getTime();
+    if (isNaN(then)) return timestamp;
+    const now = Date.now();
+    const diffMs = now - then;
+    const diffMins = Math.floor(diffMs / 60000);
+    if (diffMins < 1) return 'just now';
+    if (diffMins < 60) return `${diffMins}m ago`;
+    const diffHours = Math.floor(diffMins / 60);
+    if (diffHours < 24) return `${diffHours}h ago`;
+    const diffDays = Math.floor(diffHours / 24);
+    if (diffDays === 1) return 'yesterday';
+    if (diffDays < 7) return `${diffDays}d ago`;
+    if (diffDays < 30) return `${Math.floor(diffDays / 7)}w ago`;
+    return timestamp; // fall back to full timestamp for older
+  } catch (e) { return timestamp; }
+}
 
 const DEFAULT_DATA = {
   journey: [],
@@ -67,6 +105,9 @@ async function ensureData() {
     for (const k of Object.keys(DEFAULT_DATA)) {
       if (!Array.isArray(cachedData[k])) cachedData[k] = [];
     }
+    // Migrate kg -> lb on first load after v2.4.0
+    migrateWeightToLb(cachedData);
+    await window.api.saveData(cachedData); // persist migrated data
   } catch (error) {
     console.error('Error loading data:', error.message);
     cachedData = Object.assign({}, DEFAULT_DATA);
@@ -126,7 +167,8 @@ async function loadTabData(tabId) {
       div.onclick = () => showEntry(tabId, item.id);
       const timeDiv = document.createElement('div');
       timeDiv.className = 'entry-time';
-      timeDiv.textContent = item.timestamp;
+      timeDiv.textContent = relativeTime(item.timestamp);
+      timeDiv.title = item.timestamp; // full timestamp on hover
       const textDiv = document.createElement('div');
       textDiv.className = 'entry-text';
       const preview = String(item.content).substring(0, 120);
@@ -553,7 +595,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         const n = parseFloat(v);
         if (isNaN(n)) return 'Please enter a number.';
         if (n <= 0) return 'Weight must be positive.';
-        if (n < 20 || n > 500) return 'That seems off — enter a weight between 20 and 500 kg.';
+        if (n < 20 || n > 500) return 'That seems off — enter a weight between 44 and 1100 lb.';
         return null;
       },
       transform: (entry) => {
