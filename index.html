@@ -5,49 +5,54 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div style="text-align:center">
-  	<img src="imgs/icon.png" title="FOSSfit logo" width="300px">
-  </div>
+  <header class="app-bar">
+  	<img src="imgs/icon.png" title="FOSSfit logo" alt="FOSSfit logo">
+  </header>
   <!--XXX testing out a more minimal look with the logo instead of the text/subtext.-->
   <!--!remove the below two lines if we end up liking the image-only look better-->
   <!--<h1 style="color:#ff10f0;text-align:center">FOSSfit</h1>-->
   <!--<p style="text-align:center">Your open-source health and fitness partner!</p>-->
-  <div class="tabs" style="text-align:center">
-    <button id="journey-tab">My Health Journey</button>
+  <nav class="nav-bar">
+    <button id="journey-tab" class="active">My Health Journey</button>
     <button id="food-tab">Food Diary</button>
     <button id="medication-tab">Medication Tracker</button>
     <button id="weight-tab">Weight Tracker</button>
     <button id="goals-tab">My Health Goals</button>
     <button id="meditate-tab">🧘 Meditate</button>
     <button id="about-tab">About</button>
-  </div>
+  </nav>
   <div id="journey" class="tab-content">
     <h2>Journey Log</h2>
     <textarea id="journey-entry" rows="5" cols="50" placeholder="How are you feeling today?"></textarea>
-    <br>
     <button id="journey-save">Save</button>
     <h3>Entries</h3>
     <div id="journey-list" class="entry-list"></div>
   </div>
   <div id="food" class="tab-content" style="display:none;">
     <h2>Food Diary</h2>
-    <input type="text" id="food-entry" placeholder="Enter meal (e.g., Oatmeal, 200g)">
-    <button id="food-save">Save</button>
+    <div class="input-row">
+      <input type="text" id="food-entry" placeholder="Enter meal (e.g., Oatmeal, 200g)">
+      <button id="food-save">Save</button>
+    </div>
     <h3>Entries</h3>
     <div id="food-list" class="entry-list"></div>
   </div>
   <div id="medication" class="tab-content" style="display:none;">
     <h2>Medication Tracker</h2>
-    <input type="text" id="medication-entry" placeholder="Enter medication (e.g., Ibuprofen 200mg)">
-    <input type="time" id="medication-time">
-    <button id="medication-save">Save</button>
+    <div class="input-row">
+      <input type="text" id="medication-entry" placeholder="Enter medication (e.g., Ibuprofen 200mg)">
+      <input type="time" id="medication-time" style="max-width:140px;">
+      <button id="medication-save">Save</button>
+    </div>
     <h3>Entries</h3>
     <div id="medication-list" class="entry-list"></div>
   </div>
   <div id="weight" class="tab-content" style="display:none;">
     <h2>Weight Tracker</h2>
-    <input type="number" id="weight-entry" placeholder="Enter weight (kg)" step="0.1">
-    <button id="weight-save">Save</button>
+    <div class="input-row">
+      <input type="number" id="weight-entry" placeholder="Enter weight (kg)" step="0.1">
+      <button id="weight-save">Save</button>
+    </div>
     <h3>Your trend</h3>
     <canvas id="weight-chart" width="640" height="240" style="width:100%;max-width:640px;background:#0a0a0f;border:1px solid #2a2a3a;border-radius:4px;"></canvas>
     <p id="weight-stats" style="color:#666680;font-size:12px;margin:6px 0 12px;"></p>
@@ -56,15 +61,17 @@
   </div>
   <div id="goals" class="tab-content" style="display:none;">
     <h2>Goals</h2>
-    <input type="text" id="goal-entry" placeholder="Enter goal (e.g., Run 5km)">
-    <button id="goal-save">Save</button>
+    <div class="input-row">
+      <input type="text" id="goal-entry" placeholder="Enter goal (e.g., Run 5km)">
+      <button id="goal-save">Save</button>
+    </div>
     <h3>Entries</h3>
     <div id="goals-list" class="entry-list"></div>
   </div>
   <div id="meditate" class="tab-content" style="display:none;">
     <h2>🧘 Meditation</h2>
     <p style="color:#88889a;font-size:13px;">Pick a session length. Breathe with the circle — a calm ambient drone plays underneath. Completing a session logs it to your journey.</p>
-    <div id="meditate-start-row" style="margin:16px 0;">
+    <div id="meditate-start-row" class="meditate-presets">
       <button data-meditate-minutes="5">5 min</button>
       <button data-meditate-minutes="10">10 min</button>
       <button data-meditate-minutes="15">15 min</button>
@@ -84,19 +91,25 @@
     <p id="meditate-status" style="color:#666680;font-size:13px;"></p>
   </div>
   <div id="about" class="tab-content" style="display:none;">
-    <h2 style="color:#ff10f0">About FOSSfit</h2>
-    <p style="color:#00ffff">version: <b style="color:#39ff14">2.1.2</b></p>
-    <h3 style="color:#ff10f0">What's new in 2.0</h3>
-    <ul style="color:#ffffff;line-height:1.8;">
-      <li>🧘 <b>Meditation</b> — guided breathing sessions with an ambient drone, auto-logged to your journey</li>
-      <li>📈 <b>Weight charts</b> — see your trend over time with min / max / average</li>
-      <li>💊 <b>Medication reminders</b> — desktop notifications when it's time for your meds</li>
-      <li>⚡ <b>Faster</b> — data loads once at startup instead of on every click</li>
-      <li>🛡️ <b>Safer</b> — corrupt storage files are backed up before reset; inputs are validated</li>
-    </ul>
-    <p>Developed with ❤️  by your friends at <a href="https://xvoidsx.xyz" target="_blank" style="color:#00ffff">xvoidsx</a>.</p>
-    <p>Licensed under the <b>GNU General Public License v3.0 (GPLv3)</b>.</p>
-    <p>Built with Web technologies and the great <a href="https://www.electronjs.org" target="_blank" style="color:#00ffff">Electron</a> framework.</p>
+    <div class="about-card">
+      <h2 style="color:var(--md-sys-color-primary);margin-top:0;">About FOSSfit</h2>
+      <p style="color:var(--md-sys-color-secondary)">version: <b style="color:var(--md-sys-color-tertiary)">2.1.2</b></p>
+    </div>
+    <div class="about-card">
+      <h3 style="color:var(--md-sys-color-primary);margin-top:0;">What's new in 2.0</h3>
+      <ul style="line-height:2;">
+        <li>🧘 <b>Meditation</b> — guided breathing sessions with an ambient drone, auto-logged to your journey</li>
+        <li>📈 <b>Weight charts</b> — see your trend over time with min / max / average</li>
+        <li>💊 <b>Medication reminders</b> — desktop notifications when it's time for your meds</li>
+        <li>⚡ <b>Faster</b> — data loads once at startup instead of on every click</li>
+        <li>🛡️ <b>Safer</b> — corrupt storage files are backed up before reset; inputs are validated</li>
+      </ul>
+    </div>
+    <div class="about-card">
+      <p>Developed with ❤️ by your friends at <a href="https://xvoidsx.xyz" target="_blank">xvoidsx</a>.</p>
+      <p>Licensed under the <b>GNU General Public License v3.0 (GPLv3)</b>.</p>
+      <p>Built with Web technologies and the great <a href="https://www.electronjs.org" target="_blank">Electron</a> framework.</p>
+    </div>
   </div>
   <div id="entry-modal" class="modal" style="display:none;">
     <div class="modal-content">

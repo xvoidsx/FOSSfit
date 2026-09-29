@@ -1,190 +1,383 @@
+/* FOSSfit Material You (Material Design 3) — nightshadeNeon dark theme
+ *
+ * Design tokens follow Material Design 3 naming, adapted to xvoidsx's
+ * nightshadeNeon palette. 8dp grid, Material type scale, elevation
+ * shadows, state layers, and ripple feedback.
+ */
+
+/* ============ Design tokens ============ */
+:root {
+  /* Material 3 sys colors — nightshadeNeon dark */
+  --md-sys-color-background: #000000;
+  --md-sys-color-on-background: #ffffff;
+  --md-sys-color-surface: #0a0a0f;
+  --md-sys-color-on-surface: #ffffff;
+  --md-sys-color-surface-container-lowest: #000000;
+  --md-sys-color-surface-container-low: #0d0d14;
+  --md-sys-color-surface-container: #14141c;
+  --md-sys-color-surface-container-high: #1c1c26;
+  --md-sys-color-surface-container-highest: #24242f;
+  --md-sys-color-primary: #ff10f0;
+  --md-sys-color-on-primary: #000000;
+  --md-sys-color-primary-container: #4a0a44;
+  --md-sys-color-on-primary-container: #ffb3f5;
+  --md-sys-color-secondary: #00ffff;
+  --md-sys-color-on-secondary: #000000;
+  --md-sys-color-secondary-container: #0a3a3a;
+  --md-sys-color-on-secondary-container: #a0ffff;
+  --md-sys-color-tertiary: #39ff14;
+  --md-sys-color-on-tertiary: #000000;
+  --md-sys-color-outline: #3a3a48;
+  --md-sys-color-outline-variant: #23232e;
+
+  /* Elevation shadows (Material 3) */
+  --md-sys-elevation-1: 0 1px 3px rgba(0,0,0,.6), 0 1px 2px rgba(255,16,240,.08);
+  --md-sys-elevation-2: 0 3px 6px rgba(0,0,0,.65), 0 2px 4px rgba(255,16,240,.1);
+  --md-sys-elevation-3: 0 10px 20px rgba(0,0,0,.7), 0 4px 8px rgba(255,16,240,.12);
+
+  /* Shape */
+  --md-sys-shape-corner-small: 8px;
+  --md-sys-shape-corner-medium: 12px;
+  --md-sys-shape-corner-large: 16px;
+  --md-sys-shape-corner-extra-large: 28px;
+  --md-sys-shape-corner-full: 9999px;
+}
+
+/* ============ Base ============ */
+* { box-sizing: border-box; }
+
 body {
   font-family: 'Noto Sans', 'DejaVu Sans', 'Liberation Sans', Arial, sans-serif;
   margin: 0;
-  padding: 20px;
-  background-color: #000000; /* Black background */
-  color: #ffffff; /* White for main content text */
-}
-
-h1, h2, h3 {
-  color: #ffffff; /* White for headings */
-}
-
-.tabs button {
-  -webkit-appearance: none;
-  appearance: none;
-  font-family: inherit;
-  background-color: #00ffff; /* Cyan for tabs */
-  color: #000000; /* Black text for readability */
-  border: 2px solid #ff10f0; /* Neon pink border */
-  padding: 10px 20px;
-  margin: 5px;
-  cursor: pointer;
-  transition: all 0.3s;
-  min-width: 100px;
-}
-
-.tabs button:hover {
-  background-color: #39ff14; /* Neon green on hover */
-}
-
-.tab-content {
-  background-color: #000000; /* Black background */
-  padding: 20px;
-  border: 2px solid #ff10f0; /* Neon pink border */
-  margin-top: 20px;
-}
-
-textarea, input {
-  background-color: #000000; /* Black background */
-  color: #ffffff; /* White text */
-  border: 2px solid #00ffff; /* Cyan border */
-  padding: 8px;
-  margin: 10px 0;
-  width: calc(100% - 20px);
-}
-
-button {
-  -webkit-appearance: none;
-  appearance: none;
-  font-family: inherit;
-  background-color: #ff10f0; /* Neon pink buttons */
-  color: #000000; /* Black text */
-  border: 2px solid #00ffff; /* Cyan border */
-  padding: 8px 16px;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #39ff14; /* Neon green on hover */
-  color: #000000;
-}
-
-.entry-list {
-  max-height: 200px;
-  overflow-y: auto;
-  margin-top: 10px;
-}
-
-.list-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 8px;
-  margin: 5px 0;
-  border-left: 3px solid #39ff14; /* Neon green accent */
-  color: #ffffff; /* White for content */
-  cursor: pointer;
-  transition: background-color 0.2s;
-}
-
-.list-item:hover {
-  background-color: #00ffff; /* Cyan on hover */
-  color: #000000;
-}
-
-.delete-button {
-  background-color: #ff10f0; /* Neon pink */
-  border: none;
-  color: #000000;
+  padding: 0;
+  background-color: var(--md-sys-color-background);
+  color: var(--md-sys-color-on-background);
+  /* Material 3 body-large */
   font-size: 16px;
-  cursor: pointer;
-  padding: 2px 8px;
+  line-height: 24px;
+  letter-spacing: 0.5px;
+  -webkit-font-smoothing: antialiased;
 }
 
-.delete-button:hover {
-  background-color: #39ff14; /* Neon green on hover */
-  color: #000000;
+/* Material 3 type scale */
+h1 { font-size: 32px; line-height: 40px; font-weight: 400; letter-spacing: 0; margin: 16px 0; }
+h2 { font-size: 24px; line-height: 32px; font-weight: 400; letter-spacing: 0; margin: 16px 0 12px; color: var(--md-sys-color-on-surface); }
+h3 { font-size: 18px; line-height: 24px; font-weight: 500; letter-spacing: 0.15px; margin: 20px 0 8px; color: var(--md-sys-color-secondary); }
+
+/* ============ App bar ============ */
+.app-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 24px 8px;
+  background: var(--md-sys-color-surface-container-lowest);
+}
+.app-bar img {
+  height: 72px;
+  width: auto;
+  filter: drop-shadow(0 0 24px rgba(255,16,240,.25));
 }
 
-.modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black */
+/* ============ Navigation bar (Material 3) ============ */
+.nav-bar {
   display: flex;
   justify-content: center;
+  gap: 4px;
+  padding: 12px 16px;
+  background: var(--md-sys-color-surface-container-low);
+  border-bottom: 1px solid var(--md-sys-color-outline-variant);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  flex-wrap: wrap;
+}
+.nav-bar button {
+  -webkit-appearance: none;
+  appearance: none;
+  font-family: inherit;
+  display: flex;
   align-items: center;
-  z-index: 1000;
-}
-
-.modal-content {
-  background-color: #000000; /* Black background */
-  border: 2px solid #ff10f0; /* Neon pink border */
-  padding: 20px;
-  max-width: 500px;
-  width: 80%;
-  color: #ffffff; /* White text */
-}
-
-.close-button {
-  float: right;
-  font-size: 24px;
+  gap: 8px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: var(--md-sys-shape-corner-full);
+  background: transparent;
+  color: var(--md-sys-color-on-surface);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.1px;
   cursor: pointer;
-  color: #00ffff; /* Cyan */
+  transition: background-color .2s, color .2s;
+  min-width: 0;
+  position: relative;
+  overflow: hidden;
+  box-shadow: none;
+}
+/* state layer on hover */
+.nav-bar button:hover { background: rgba(255,255,255,.08); box-shadow: none; filter: none; }
+/* active pill — Material 3 indicator */
+.nav-bar button.active {
+  background: var(--md-sys-color-secondary-container);
+  color: var(--md-sys-color-on-secondary-container);
+  font-weight: 600;
+}
+.nav-bar button.active:hover { background: rgba(0,255,255,.18); }
+/* ripple */
+.nav-bar button:active::after,
+.md-button:active::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: currentColor;
+  opacity: .12;
+  border-radius: inherit;
+  pointer-events: none;
 }
 
-.close-button:hover {
-  color: #39ff14; /* Neon green on hover */
+/* ============ Content ============ */
+.tab-content {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 24px 24px 48px;
+  animation: fade-in .25s ease;
+}
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: none; }
 }
 
-/* FOSSfit 2.0 additions */
-.inline-error {
-  color: #ff6b6b;
-  font-size: 12px;
-  margin: 4px 0 8px;
-  padding-left: 2px;
+/* ============ Material buttons ============ */
+.md-button, button {
+  -webkit-appearance: none;
+  appearance: none;
+  font-family: inherit;
+  position: relative;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border: none;
+  border-radius: var(--md-sys-shape-corner-full);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.1px;
+  cursor: pointer;
+  transition: box-shadow .2s, background-color .2s, transform .1s;
+  min-height: 44px;
+}
+/* filled button — primary */
+button {
+  background: var(--md-sys-color-primary);
+  color: var(--md-sys-color-on-primary);
+  box-shadow: var(--md-sys-elevation-1);
+}
+button:hover {
+  box-shadow: var(--md-sys-elevation-2);
+  filter: brightness(1.1);
+}
+button:active { transform: scale(.98); box-shadow: var(--md-sys-elevation-1); }
+button:disabled { opacity: .38; cursor: default; box-shadow: none; }
+
+/* tonal variant for secondary actions */
+.button-tonal {
+  background: var(--md-sys-color-secondary-container);
+  color: var(--md-sys-color-on-secondary-container);
 }
 
-/* Weight chart */
-#weight-chart {
+/* ============ Material text fields ============ */
+input[type="text"], input[type="number"], input[type="time"], textarea {
+  font-family: inherit;
   width: 100%;
-  max-width: 600px;
-  height: 220px;
-  margin: 12px 0;
-  border: 1px solid #00ffff;
-  background: #0a0a0a;
+  padding: 16px;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--md-sys-color-on-surface);
+  background: var(--md-sys-color-surface-container);
+  border: 1px solid var(--md-sys-color-outline);
+  border-radius: var(--md-sys-shape-corner-small);
+  outline: none;
+  transition: border-color .2s, box-shadow .2s;
+  margin-bottom: 12px;
 }
-.weight-stats {
-  color: #39ff14;
-  font-size: 13px;
-  margin: 6px 0 12px;
+input[type="text"]:hover, input[type="number"]:hover, input[type="time"]:hover, textarea:hover {
+  border-color: var(--md-sys-color-on-surface);
+}
+input[type="text"]:focus, input[type="number"]:focus, input[type="time"]:focus, textarea:focus {
+  border-color: var(--md-sys-color-primary);
+  border-width: 2px;
+  padding: 15px; /* compensate for border growth */
+  box-shadow: 0 0 0 1px var(--md-sys-color-primary);
+}
+input::placeholder, textarea::placeholder { color: #6a6a7a; }
+textarea { resize: vertical; min-height: 120px; }
+
+/* inline row: input + button side by side */
+.input-row { display: flex; gap: 12px; align-items: flex-start; }
+.input-row input, .input-row textarea { flex: 1; margin-bottom: 0; }
+.input-row button { flex-shrink: 0; }
+
+/* ============ Material cards (entries) ============ */
+.entry-list { display: flex; flex-direction: column; gap: 12px; margin-top: 12px; }
+.entry-card {
+  background: var(--md-sys-color-surface-container-low);
+  border: 1px solid var(--md-sys-color-outline-variant);
+  border-radius: var(--md-sys-shape-corner-medium);
+  padding: 16px;
+  box-shadow: var(--md-sys-elevation-1);
+  transition: box-shadow .2s, border-color .2s;
+  cursor: pointer;
+}
+.entry-card:hover {
+  box-shadow: var(--md-sys-elevation-2);
+  border-color: var(--md-sys-color-outline);
+}
+.entry-card .entry-time {
+  font-size: 12px;
+  letter-spacing: .4px;
+  color: var(--md-sys-color-secondary);
+  margin-bottom: 4px;
+  font-weight: 500;
+}
+.entry-card .entry-text {
+  font-size: 15px;
+  line-height: 22px;
+  color: var(--md-sys-color-on-surface);
+}
+/* legacy entry rows (if app.js renders plain divs) */
+.entry-list > div:not(.entry-card) {
+  background: var(--md-sys-color-surface-container-low);
+  border: 1px solid var(--md-sys-color-outline-variant);
+  border-radius: var(--md-sys-shape-corner-medium);
+  padding: 14px 16px;
+  font-size: 14px;
+  line-height: 20px;
 }
 
-/* Meditation tab */
-.meditate-presets {
-  margin: 12px 0;
+/* delete button — Material icon-button style */
+.delete-button {
+  -webkit-appearance: none;
+  appearance: none;
+  font-family: inherit;
+  min-height: 0;
+  padding: 8px 16px;
+  font-size: 13px;
+  background: transparent;
+  color: #ff6b6b;
+  border: 1px solid #ff6b6b55;
+  border-radius: var(--md-sys-shape-corner-full);
+  box-shadow: none;
 }
+.delete-button:hover { background: rgba(255,107,107,.12); box-shadow: none; filter: none; }
+
+/* ============ Meditation ============ */
+.meditate-presets { display: flex; gap: 12px; flex-wrap: wrap; margin: 16px 0; }
 .meditate-presets button {
-  margin-right: 8px;
+  background: var(--md-sys-color-secondary-container);
+  color: var(--md-sys-color-on-secondary-container);
 }
 #breath-circle {
   width: 160px;
   height: 160px;
   border-radius: 50%;
-  border: 3px solid #c9a0ff;
+  border: 3px solid var(--md-sys-color-secondary);
   margin: 24px auto;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: transform 4s ease-in-out, opacity 1s;
-  box-shadow: 0 0 30px #7a3fff44;
+  box-shadow: 0 0 40px rgba(0,255,255,.25), var(--md-sys-elevation-2);
+  background: radial-gradient(circle, rgba(0,255,255,.12) 0%, transparent 70%);
 }
 #breath-text {
-  color: #c9a0ff;
+  color: var(--md-sys-color-secondary);
   font-size: 15px;
   text-align: center;
+  letter-spacing: 2px;
 }
 #meditate-timer {
   text-align: center;
-  font-size: 28px;
-  color: #00ffff;
+  font-size: 48px;
+  font-weight: 300;
+  letter-spacing: 4px;
+  color: var(--md-sys-color-on-surface);
   margin: 12px 0;
   font-variant-numeric: tabular-nums;
 }
-.meditate-controls {
-  text-align: center;
-  margin: 16px 0;
+.meditate-controls { text-align: center; margin: 16px 0; }
+
+/* ============ Weight chart ============ */
+#weight-chart {
+  width: 100%;
+  max-width: 640px;
+  background: var(--md-sys-color-surface-container-low);
+  border: 1px solid var(--md-sys-color-outline-variant);
+  border-radius: var(--md-sys-shape-corner-medium);
+  box-shadow: var(--md-sys-elevation-1);
 }
+#weight-stats { color: #8a8a9a; font-size: 13px; margin: 8px 0 16px; }
+
+/* ============ Modal (Material dialog) ============ */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  animation: fade-in .2s ease;
+}
+.modal-content {
+  background: var(--md-sys-color-surface-container-high);
+  border-radius: var(--md-sys-shape-corner-extra-large);
+  padding: 28px;
+  max-width: 480px;
+  width: calc(100% - 48px);
+  box-shadow: var(--md-sys-elevation-3);
+  position: relative;
+}
+.close-button {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 40px;
+  height: 40px;
+  min-height: 0;
+  padding: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--md-sys-color-on-surface);
+  box-shadow: none;
+  font-size: 20px;
+  line-height: 1;
+}
+.close-button:hover { background: rgba(255,255,255,.1); box-shadow: none; filter: none; }
+
+/* ============ Inline validation ============ */
+.inline-error {
+  color: #ff6b6b;
+  font-size: 13px;
+  margin: 4px 0 8px 16px;
+}
+
+/* ============ About ============ */
+.about-card {
+  background: var(--md-sys-color-surface-container-low);
+  border: 1px solid var(--md-sys-color-outline-variant);
+  border-radius: var(--md-sys-shape-corner-large);
+  padding: 24px;
+  box-shadow: var(--md-sys-elevation-1);
+  margin-bottom: 16px;
+}
+.about-card ul { line-height: 2; padding-left: 20px; }
+.about-card li::marker { color: var(--md-sys-color-primary); }
+a { color: var(--md-sys-color-secondary); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ============ Scrollbar (subtle) ============ */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--md-sys-color-outline-variant); border-radius: 5px; }
+::-webkit-scrollbar-thumb:hover { background: var(--md-sys-color-outline); }

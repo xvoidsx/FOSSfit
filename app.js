@@ -89,6 +89,12 @@ function showTab(tabId) {
   document.querySelectorAll('.tab-content').forEach(tab => {
     tab.style.display = 'none';
   });
+  // Material 3 nav-bar active pill
+  document.querySelectorAll('.nav-bar button').forEach(btn => {
+    btn.classList.remove('active');
+  });
+  const navBtn = document.getElementById(`${tabId}-tab`);
+  if (navBtn) navBtn.classList.add('active');
   const tabElement = document.getElementById(tabId);
   if (tabElement) {
     tabElement.style.display = 'block';
@@ -116,16 +122,22 @@ async function loadTabData(tabId) {
     // Newest first.
     [...items].reverse().forEach(item => {
       const div = document.createElement('div');
-      div.className = 'list-item';
-      const contentSpan = document.createElement('span');
-      const preview = String(item.content).substring(0, 50);
-      contentSpan.textContent = `${item.timestamp}: ${preview}${String(item.content).length > 50 ? '...' : ''}`;
-      contentSpan.onclick = () => showEntry(tabId, item.id);
+      div.className = 'entry-card';
+      div.onclick = () => showEntry(tabId, item.id);
+      const timeDiv = document.createElement('div');
+      timeDiv.className = 'entry-time';
+      timeDiv.textContent = item.timestamp;
+      const textDiv = document.createElement('div');
+      textDiv.className = 'entry-text';
+      const preview = String(item.content).substring(0, 120);
+      textDiv.textContent = `${preview}${String(item.content).length > 120 ? '…' : ''}`;
       const deleteButton = document.createElement('button');
       deleteButton.className = 'delete-button';
-      deleteButton.textContent = '×';
+      deleteButton.textContent = 'Delete';
+      deleteButton.style.marginTop = '8px';
       deleteButton.onclick = (e) => { e.stopPropagation(); deleteEntry(tabId, item.id); };
-      div.appendChild(contentSpan);
+      div.appendChild(timeDiv);
+      div.appendChild(textDiv);
       div.appendChild(deleteButton);
       list.appendChild(div);
     });
