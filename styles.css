@@ -122,3 +122,11 @@ button:hover {
 .close-button:hover {
   color: #39ff14; /* Neon green on hover */
 }
+
+/* FOSSfit 2.0 additions */
+.inline-error {
+  color: #ff6b6b;
+  font-size: 12px;
+  margin: 4px 0 8px;
+  padding-left: 2px;
+}

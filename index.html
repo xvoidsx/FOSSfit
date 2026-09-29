@@ -18,6 +18,7 @@
     <button id="medication-tab">Medication Tracker</button>
     <button id="weight-tab">Weight Tracker</button>
     <button id="goals-tab">My Health Goals</button>
+    <button id="meditate-tab">🧘 Meditate</button>
     <button id="about-tab">About</button>
   </div>
   <div id="journey" class="tab-content">
@@ -47,6 +48,9 @@
     <h2>Weight Tracker</h2>
     <input type="number" id="weight-entry" placeholder="Enter weight (kg)" step="0.1">
     <button id="weight-save">Save</button>
+    <h3>Your trend</h3>
+    <canvas id="weight-chart" width="640" height="240" style="width:100%;max-width:640px;background:#0a0a0f;border:1px solid #2a2a3a;border-radius:4px;"></canvas>
+    <p id="weight-stats" style="color:#666680;font-size:12px;margin:6px 0 12px;"></p>
     <h3>Entries</h3>
     <div id="weight-list" class="entry-list"></div>
   </div>
@@ -57,9 +61,39 @@
     <h3>Entries</h3>
     <div id="goals-list" class="entry-list"></div>
   </div>
+  <div id="meditate" class="tab-content" style="display:none;">
+    <h2>🧘 Meditation</h2>
+    <p style="color:#88889a;font-size:13px;">Pick a session length. Breathe with the circle — a calm ambient drone plays underneath. Completing a session logs it to your journey.</p>
+    <div id="meditate-start-row" style="margin:16px 0;">
+      <button data-meditate-minutes="5">5 min</button>
+      <button data-meditate-minutes="10">10 min</button>
+      <button data-meditate-minutes="15">15 min</button>
+      <button data-meditate-minutes="20">20 min</button>
+    </div>
+    <div style="text-align:center;margin:12px 0;">
+      <div id="meditate-timer" style="font-size:42px;letter-spacing:4px;color:#c9a0ff;">--:--</div>
+      <div id="meditate-duration" style="display:none;">0</div>
+    </div>
+    <div id="meditate-guide" style="display:none;flex-direction:column;align-items:center;margin:20px 0;">
+      <div id="breath-circle" style="width:120px;height:120px;border-radius:50%;border:3px solid #7a3fff;background:radial-gradient(circle,#7a3fff33 0%,#7a3fff11 70%,transparent 100%);box-shadow:0 0 40px #7a3fff55;"></div>
+      <div id="breath-label" style="margin-top:16px;font-size:18px;color:#c9a0ff;letter-spacing:2px;">breathe in…</div>
+    </div>
+    <div style="margin:12px 0;">
+      <button id="meditate-stop" style="display:none;">End session</button>
+    </div>
+    <p id="meditate-status" style="color:#666680;font-size:13px;"></p>
+  </div>
   <div id="about" class="tab-content" style="display:none;">
     <h2 style="color:#ff10f0">About FOSSfit</h2>
-    <p style="color:#00ffff">version: <b style="color:#39ff14">1.0.0</b></p>
+    <p style="color:#00ffff">version: <b style="color:#39ff14">2.0.0</b></p>
+    <h3 style="color:#ff10f0">What's new in 2.0</h3>
+    <ul style="color:#ffffff;line-height:1.8;">
+      <li>🧘 <b>Meditation</b> — guided breathing sessions with an ambient drone, auto-logged to your journey</li>
+      <li>📈 <b>Weight charts</b> — see your trend over time with min / max / average</li>
+      <li>💊 <b>Medication reminders</b> — desktop notifications when it's time for your meds</li>
+      <li>⚡ <b>Faster</b> — data loads once at startup instead of on every click</li>
+      <li>🛡️ <b>Safer</b> — corrupt storage files are backed up before reset; inputs are validated</li>
+    </ul>
     <p>Developed with ❤️  by your friends at <a href="https://xvoidsx.xyz" target="_blank" style="color:#00ffff">xvoidsx</a>.</p>
     <p>Licensed under the <b>GNU General Public License v3.0 (GPLv3)</b>.</p>
     <p>Built with Web technologies and the great <a href="https://www.electronjs.org" target="_blank" style="color:#00ffff">Electron</a> framework.</p>
