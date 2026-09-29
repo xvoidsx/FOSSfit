@@ -1,6 +1,6 @@
 {
   "name": "fossfit",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Your open-source health and fitness partner!",
   "homepage": "https://xvoidsx.xyz",
   "main": "main.js",
@@ -21,7 +21,9 @@
     "appId": "com.xvoidsx.fossfit",
     "productName": "FOSSfit",
     "linux": {
-      "target": ["deb"],
+      "target": [
+        "deb"
+      ],
       "category": "Utility",
       "icon": "icons",
       "desktop": "build/fossfit.desktop",
