@@ -5,22 +5,24 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header class="app-bar">
-  	<img src="imgs/icon.png" title="FOSSfit logo" alt="FOSSfit logo">
-  </header>
-  <!--XXX testing out a more minimal look with the logo instead of the text/subtext.-->
-  <!--!remove the below two lines if we end up liking the image-only look better-->
-  <!--<h1 style="color:#ff10f0;text-align:center">FOSSfit</h1>-->
-  <!--<p style="text-align:center">Your open-source health and fitness partner!</p>-->
-  <nav class="nav-bar">
-    <button id="journey-tab" class="active">My Health Journey</button>
-    <button id="food-tab">Food Diary</button>
-    <button id="medication-tab">Medication Tracker</button>
-    <button id="weight-tab">Weight Tracker</button>
-    <button id="goals-tab">My Health Goals</button>
-    <button id="meditate-tab">🧘 Meditate</button>
-    <button id="about-tab">About</button>
-  </nav>
+<div class="app-layout">
+  <aside class="nav-drawer">
+    <div class="nav-drawer-header">
+      <img src="imgs/icon.png" title="FOSSfit logo" alt="FOSSfit logo">
+      <div class="app-name">FOSSfit</div>
+      <div class="app-tagline">OPEN SOURCE FITNESS</div>
+    </div>
+    <nav>
+      <button id="journey-tab" class="active"><span class="nav-icon">📝</span>My Health Journey</button>
+      <button id="food-tab"><span class="nav-icon">🍎</span>Food Diary</button>
+      <button id="medication-tab"><span class="nav-icon">💊</span>Medication Tracker</button>
+      <button id="weight-tab"><span class="nav-icon">📈</span>Weight Tracker</button>
+      <button id="goals-tab"><span class="nav-icon">🎯</span>My Health Goals</button>
+      <button id="meditate-tab"><span class="nav-icon">🧘</span>Meditate</button>
+      <button id="about-tab"><span class="nav-icon">ℹ️</span>About</button>
+    </nav>
+  </aside>
+  <main class="main-content">
   <div id="journey" class="tab-content">
     <h2>Journey Log</h2>
     <textarea id="journey-entry" rows="5" cols="50" placeholder="How are you feeling today?"></textarea>
@@ -93,7 +95,7 @@
   <div id="about" class="tab-content" style="display:none;">
     <div class="about-card">
       <h2 style="color:var(--md-sys-color-primary);margin-top:0;">About FOSSfit</h2>
-      <p style="color:var(--md-sys-color-secondary)">version: <b style="color:var(--md-sys-color-tertiary)">2.2.0</b></p>
+      <p style="color:var(--md-sys-color-secondary)">version: <b style="color:var(--md-sys-color-tertiary)">2.3.0</b></p>
     </div>
     <div class="about-card">
       <h3 style="color:var(--md-sys-color-primary);margin-top:0;">What's new in 2.0</h3>
@@ -119,6 +121,8 @@
       <p id="modal-content"></p>
     </div>
   </div>
+  </main><!-- .main-content -->
+</div><!-- .app-layout -->
   <script src="app.js"></script>
 </body>
 </html>

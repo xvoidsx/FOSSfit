@@ -90,7 +90,7 @@ function showTab(tabId) {
     tab.style.display = 'none';
   });
   // Material 3 nav-bar active pill
-  document.querySelectorAll('.nav-bar button').forEach(btn => {
+  document.querySelectorAll('.nav-drawer button').forEach(btn => {
     btn.classList.remove('active');
   });
   const navBtn = document.getElementById(`${tabId}-tab`);

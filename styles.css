@@ -64,41 +64,59 @@ h1 { font-size: 32px; line-height: 40px; font-weight: 400; letter-spacing: 0; ma
 h2 { font-size: 24px; line-height: 32px; font-weight: 400; letter-spacing: 0; margin: 16px 0 12px; color: var(--md-sys-color-on-surface); }
 h3 { font-size: 18px; line-height: 24px; font-weight: 500; letter-spacing: 0.15px; margin: 20px 0 8px; color: var(--md-sys-color-secondary); }
 
-/* ============ App bar ============ */
-.app-bar {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 16px 24px 8px;
-  background: var(--md-sys-color-surface-container-lowest);
-}
-.app-bar img {
-  height: 72px;
-  width: auto;
-  filter: drop-shadow(0 0 24px rgba(255,16,240,.25));
-}
-
-/* ============ Navigation bar (Material 3) ============ */
-.nav-bar {
-  display: flex;
-  justify-content: center;
-  gap: 4px;
-  padding: 12px 16px;
+/* ============ Navigation drawer (Material 3) ============ */
+.app-layout { display: flex; min-height: 100vh; }
+.nav-drawer {
+  width: 280px;
+  flex-shrink: 0;
   background: var(--md-sys-color-surface-container-low);
-  border-bottom: 1px solid var(--md-sys-color-outline-variant);
+  border-right: 1px solid var(--md-sys-color-outline-variant);
+  display: flex;
+  flex-direction: column;
   position: sticky;
   top: 0;
+  height: 100vh;
   z-index: 10;
-  flex-wrap: wrap;
 }
-.nav-bar button {
+.nav-drawer-header {
+  padding: 32px 24px 24px;
+  text-align: center;
+  border-bottom: 1px solid var(--md-sys-color-outline-variant);
+}
+.nav-drawer-header img {
+  width: 160px;
+  height: auto;
+  filter: drop-shadow(0 0 32px rgba(255,16,240,.35));
+}
+.nav-drawer-header .app-name {
+  margin-top: 12px;
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 0.15px;
+  color: var(--md-sys-color-on-surface);
+}
+.nav-drawer-header .app-tagline {
+  font-size: 12px;
+  color: var(--md-sys-color-secondary);
+  letter-spacing: 0.4px;
+  margin-top: 4px;
+}
+.nav-drawer nav {
+  flex: 1;
+  padding: 16px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  overflow-y: auto;
+}
+.nav-drawer button {
   -webkit-appearance: none;
   appearance: none;
   font-family: inherit;
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 10px 20px;
+  gap: 12px;
+  padding: 14px 20px;
   border: none;
   border-radius: var(--md-sys-shape-corner-full);
   background: transparent;
@@ -108,23 +126,23 @@ h3 { font-size: 18px; line-height: 24px; font-weight: 500; letter-spacing: 0.15p
   letter-spacing: 0.1px;
   cursor: pointer;
   transition: background-color .2s, color .2s;
-  min-width: 0;
+  width: 100%;
+  text-align: left;
   position: relative;
   overflow: hidden;
   box-shadow: none;
+  min-height: 0;
 }
-/* state layer on hover */
-.nav-bar button:hover { background: rgba(255,255,255,.08); box-shadow: none; filter: none; }
-/* active pill — Material 3 indicator */
-.nav-bar button.active {
+.nav-drawer button:hover { background: rgba(255,255,255,.08); box-shadow: none; filter: none; }
+.nav-drawer button.active {
   background: var(--md-sys-color-secondary-container);
   color: var(--md-sys-color-on-secondary-container);
   font-weight: 600;
 }
-.nav-bar button.active:hover { background: rgba(0,255,255,.18); }
-/* ripple */
-.nav-bar button:active::after,
-.md-button:active::after {
+.nav-drawer button.active:hover { background: rgba(0,255,255,.18); }
+.nav-drawer button .nav-icon { font-size: 20px; width: 24px; text-align: center; flex-shrink: 0; }
+/* ripple — scoped to nav-drawer */
+.nav-drawer button:active::after {
   content: '';
   position: absolute;
   inset: 0;
@@ -133,6 +151,7 @@ h3 { font-size: 18px; line-height: 24px; font-weight: 500; letter-spacing: 0.15p
   border-radius: inherit;
   pointer-events: none;
 }
+.main-content { flex: 1; min-width: 0; }
 
 /* ============ Content ============ */
 .tab-content {
@@ -260,6 +279,8 @@ textarea { resize: vertical; min-height: 120px; }
   -webkit-appearance: none;
   appearance: none;
   font-family: inherit;
+  position: relative;
+  overflow: hidden;
   min-height: 0;
   padding: 8px 16px;
   font-size: 13px;
