@@ -11,6 +11,9 @@ h1, h2, h3 {
 }
 
 .tabs button {
+  -webkit-appearance: none;
+  appearance: none;
+  font-family: inherit;
   background-color: #00ffff; /* Cyan for tabs */
   color: #000000; /* Black text for readability */
   border: 2px solid #ff10f0; /* Neon pink border */
@@ -18,6 +21,7 @@ h1, h2, h3 {
   margin: 5px;
   cursor: pointer;
   transition: all 0.3s;
+  min-width: 100px;
 }
 
 .tabs button:hover {
@@ -41,6 +45,9 @@ textarea, input {
 }
 
 button {
+  -webkit-appearance: none;
+  appearance: none;
+  font-family: inherit;
   background-color: #ff10f0; /* Neon pink buttons */
   color: #000000; /* Black text */
   border: 2px solid #00ffff; /* Cyan border */
