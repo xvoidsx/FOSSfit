@@ -139,7 +139,7 @@ function createWindow() {
       preload: path.join(__dirname, 'preload.js') // includes our preload script
     }
   });
-  win.loadFile('index.html');
+  win.loadFile(path.join(__dirname, 'index.html'));
   // win.webContents.openDevTools(); // uncomment this line for debugging
 }
 
